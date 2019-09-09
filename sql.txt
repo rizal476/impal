@@ -1,0 +1,14 @@
+create table mengelola(
+    username_karyawan char(10),
+    id_barang char(6)
+);
+
+alter table mengelola add constraint username_karyawan_fk foreign key (username_karyawan) references karyawan(username_karyawan) on delete cascade;
+alter table mengelola add constraint id_barang_fk foreign key (id_barang) references barang(id_barang) on delete cascade;
+
+insert into mengelola values ('karyawan01','brg001');
+insert into mengelola values ('karyawan02','brg002');
+insert into mengelola values ('karyawan03','brg003');
+
+select * from mengelola;
+select * from mengelola where id_barang = 'brg001';

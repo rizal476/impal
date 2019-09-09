@@ -1,14 +1,75 @@
+/*
+Wishnu = membuat tabel pemilik, insert pemilik, select pemilik
+Hafiyy = membuat tabel karyawan, insert karyawan, select karyawan
+Rifky = membuat tabel barang, insert barang, select barang
+Rizal = membuat relasi antar tabel dan select tabel mengelola
+*/
+
+create table pemilik(
+	username_pemilik char(10) primary key,
+	password_pemilik varchar(15),
+	nama_pemilik varchar(255),
+	alamat_pemilik varchar(255),
+	umur_pemilik int(2)
+);
+
+create table karyawan(
+	username_karyawan char(10) primary key,
+	username_pemilik char(10),
+	password_karyawan varchar(15),
+	nama_karyawan varchar(255),
+	alamat_karyawan varchar(255),
+	umur_karyawan int(2)
+);
+
+create table barang(
+	id_barang char(6) primary key,
+	nama_barang varchar(50),
+	keterangan_barang varchar(255),
+	jenis_barang varchar(255),
+	harga_barang int(10),
+	jumlah_barang int(5)
+);
+
 create table mengelola(
     username_karyawan char(10),
     id_barang char(6)
 );
 
+alter table karyawan add constraint username_pemilik_fk foreign key (username_pemilik) references pemilik(username_pemilik) on delete cascade;
 alter table mengelola add constraint username_karyawan_fk foreign key (username_karyawan) references karyawan(username_karyawan) on delete cascade;
 alter table mengelola add constraint id_barang_fk foreign key (id_barang) references barang(id_barang) on delete cascade;
 
-insert into mengelola values ('karyawan01','brg001');
-insert into mengelola values ('karyawan02','brg002');
-insert into mengelola values ('karyawan03','brg003');
+insert into pemilik values ('yuleo12345','juki','farhan yuleo','Cijaura timur No.5',20);
+insert into pemilik values ('wisnugg123','wishno','Wishnu Dwi','Buahbatu No.20',20);
+insert into pemilik values ('nauffan123','naura','Nauffa M','Cibadak No.7',21);
+
+insert into karyawan values ('hafikeren1','yuleo12345','wilda','hafiyy viazola','Cijaura Barat No.5',20);
+insert into karyawan values ('rizalgg123','yuleo12345','nadilla','rizal kusuma','Setiabudi No.20',20);
+insert into karyawan values ('rifkuy1234','yuleo12345','nadia','rifky rivaldi','Baleendah No.7',21);
+
+insert into barang values ('brg001','oreo','available','makanan',10000,50);
+insert into barang values ('brg002','fanta','available','minuman',5000,30);
+insert into barang values ('brg003','tango','available','makanan',7000,20);
+
+insert into mengelola values ('hafikeren1','brg001');
+insert into mengelola values ('rizalgg123','brg002');
+insert into mengelola values ('rifkuy1234','brg003');
+
+select nama_pemilik,umur_pemilik from pemilik where umur_pemilik = 21;
+select username_pemilik from pemilik;
+select * from pemilik;
+select * from pemilik where username_pemilik = 'wisnugg123';
+
+select nama_karyawan,umur_karyawan from karyawan where umur_karyawan = 21;
+select username_karyawan from karyawan;
+select * from karyawan;
+select * from karyawan where username_karyawan = 'rizalgg123';
 
 select * from mengelola;
 select * from mengelola where id_barang = 'brg001';
+
+select id_barang,nama_barang from barang;
+select nama_barang from barang where keterangan_barang='available';
+select * from barang;
+select id_barang from barang where jenis_barang='makanan';

@@ -22,7 +22,25 @@ create table karyawan(
 	umur_karyawan int(2)
 );
 
-create table barang(
+create table barang_tersedia(
+	id_barang char(6) primary key,
+	nama_barang varchar(50),
+	keterangan_barang varchar(255),
+	jenis_barang varchar(255),
+	harga_barang int(10),
+	jumlah_barang int(5)
+);
+
+create table barang_terjual(
+	id_barang char(6) primary key,
+	nama_barang varchar(50),
+	keterangan_barang varchar(255),
+	jenis_barang varchar(255),
+	harga_barang int(10),
+	jumlah_barang int(5)
+);
+
+create table pesanan(
 	id_barang char(6) primary key,
 	nama_barang varchar(50),
 	keterangan_barang varchar(255),

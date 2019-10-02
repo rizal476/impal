@@ -315,33 +315,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="table">
         <h2 class="judul-barang">Input Data Barang</h2>
         <div class="login-form">
-            <form method="post" action="<?php echo base_url()?>karyawan_controller/input_barang" class="">
+            <form method="post" action="<?php echo base_url()?>karyawan_controller/tambah_barang" class="">
                 <div class="form-div">
                     <div class="form-div-div">ID Barang</div>
-                    <input class="" type="text" name="username" placeholder="">
+                    <input class="" type="text" name="id" placeholder="">
                 </div>
                 <div class="form-div">
                     <div class="form-div-div">Nama Barang</div>
-                    <input class="" type="text" name="password" placeholder="">
+                    <input class="" type="text" name="nama_barang" placeholder="">
                 </div>
                 <div class="form-div">
                     <div class="form-div-div">Jumlah</div>
-                    <input class="" type="text" name="password" placeholder="">
+                    <input class="" type="text" name="jumlah" placeholder="">
                 </div>
                 <div class="form-div">
                     <div class="form-div-div">Jenis</div>
-                    <input class="" type="text" name="password" placeholder="">
+                    <input class="" type="text" name="jenis" placeholder="">
                 </div>
                 <div class="form-div">
                     <div class="form-div-div">Harga</div>
-                    <input class="" type="text" name="password" placeholder="">
+                    <input class="" type="text" name="harga" placeholder="">
                 </div>
                 <div class="form-div">
                     <div class="form-div-div">Keterangan</div>
-                    <input class="" type="text" name="password" placeholder="">
+                    <input class="" type="text" name="keterangan" placeholder="">
                 </div>
                 <div class="container-login100-form-btn">
-                    <button class="input-btn">
+                    <button type="submit" class="input-btn">
                         Input
                     </button>
                 </div>

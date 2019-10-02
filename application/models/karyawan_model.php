@@ -10,4 +10,8 @@ class Karyawan_model extends CI_Model{
         return $q->result_array();
     }
 
+    public function tambahBarang($data){
+        $this->db->insert('barang_tersedia',$data);
+    }
+
 }

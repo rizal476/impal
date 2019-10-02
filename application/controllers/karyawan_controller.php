@@ -7,7 +7,8 @@ class Karyawan_controller extends CI_Controller {
 		parent::__construct();
 		$this->load->Model('pemilik_model');
 		$this->load->Model('karyawan_model');
-		$this->load->Model('barang_model');
+        $this->load->Model('barang_model');
+        $this->load->library('form_validation');
 		$this->load->library('session');
 	}
 	
@@ -30,5 +31,30 @@ class Karyawan_controller extends CI_Controller {
     public function lihat_stock_karyawan(){
         $data['barang'] = $this->barang_model->get_all_barang();
         $this->load->view('lihat_stock_karyawan',$data);
+    }
+
+    public function tambah_barang(){
+        $this->form_validation->set_rules('id', 'ID Barang', 'required');
+		$this->form_validation->set_rules('nama_barang', 'Nama Barang', 'required');
+		$this->form_validation->set_rules('jumlah', 'Jumlah', 'required');
+        $this->form_validation->set_rules('jenis', 'Jenis', 'required');
+        $this->form_validation->set_rules('harga', 'Harga', 'required');
+        $this->form_validation->set_rules('keterangan', 'Keterangan', 'required');
+
+		if ($this->form_validation->run() == FALSE){
+			$this->load->view('lihat_stock_karyawan');
+		}
+		else{
+            $data = [
+				"id_barang" => $this->input->post('id', true),
+				"nama_barang" => $this->input->post('nama_barang', true),
+				"keterangan_barang" => $this->input->post('keterangan', true),
+                "jenis_barang" => $this->input->post('jenis', true),
+                "harga_barang" => $this->input->post('harga', true),
+                "jumlah_barang" => $this->input->post('jumlah', true)
+			];
+		    $this->karyawan_model->tambahBarang($data);
+			$this->load->view('input_barang');
+		}
     }
 }

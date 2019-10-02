@@ -6,8 +6,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta charset="utf-8">
 	<title>Jukimart</title>
     <script type="text/javascript" src="assets/chartjs/Chart.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
 	<style type="text/css">
-
 		body{
 			background: white;
 			height:100%; 
@@ -77,7 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             padding: 8px 8px 8px 32px;
             text-decoration: none;
             font-size: 25px;
-            font-family: Muli;
+            font-family: 'Muli', sans-serif;
             display: block;
             margin-top: 30px;
             color: #818181;
@@ -103,7 +103,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             left: 1189px;
             top: 10px;
 
-            font-family: Prompt;
+            font-family: 'Muli', sans-serif;
             font-style: normal;
             font-weight: normal;
             font-size: 24px;
@@ -122,7 +122,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             left: 1400px;
             top: 10px;
 
-            font-family: Prompt;
+            font-family: 'Muli', sans-serif;
             font-style: normal;
             font-weight: normal;
             font-size: 24px;
@@ -164,6 +164,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         table {
             border-collapse: collapse;
             width: 50%;
+            font-family: 'Muli', sans-serif;
         }
 
         th, td {
@@ -175,6 +176,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         h2{
             margin-top: 200px;
+            font-family: 'Muli', sans-serif;
         }
 	</style>
 </head>

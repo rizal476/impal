@@ -1,5 +1,5 @@
 <?php
-class User_model extends CI_Model{
+class Karyawan_model extends CI_Model{
 
     public function cekLogin($table,$where){
         return $this->db->get_where($table,$where)->num_rows();

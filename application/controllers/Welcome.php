@@ -5,7 +5,8 @@ class Welcome extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->Model('user_model');
+		$this->load->Model('pemilik_model');
+		$this->load->Model('karyawan_model');
 		$this->load->library('session');
 	}
 	
@@ -21,27 +22,32 @@ class Welcome extends CI_Controller {
 			'username' => $username,
 			'password' =>$password
 			);
-		$cek = $this->user_model->cekLogin("pemilik",$where);
+		$cek = $this->pemilik_model->cekLogin("pemilik",$where);
 		$table = "pemilik";
-		if($cek == 0){
-			$cek = $this->user_model->cekLogin("karyawan",$where);
-			$table = "karyawan";
-		}
 		if($cek > 0){
-			$q = $this->user_model->getUser($table,$username);
+			$q = $this->pemilik_model->getUser($table,$username);
 			$data_session = array(
 				'nama' => $q[0]["nama"],
 				'alamat' => $q[0]["alamat"],
 				'umur' => $q[0]["umur"]
 				);
 			$this->session->set_userdata($data_session);
-			if($q[0]["role"] == 1){
-				redirect("pemilik_controller");
-			}else if($q[0]["role"] == 2){
+			redirect("pemilik_controller");
+		} else if($cek == 0){
+			$cek = $this->karyawan_model->cekLogin("karyawan",$where);
+			$table = "karyawan";
+			if($cek > 0){
+				$q = $this->karyawan_model->getUser($table,$username);
+				$data_session = array(
+					'nama' => $q[0]["nama"],
+					'alamat' => $q[0]["alamat"],
+					'umur' => $q[0]["umur"]
+					);
+				$this->session->set_userdata($data_session);
 				redirect("karyawan_controller");
+			} else {
+				echo "Username dan password salah !";
 			}
-		}else{
-			echo "Username dan password salah !";
 		}
 	}
 }

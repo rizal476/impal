@@ -5,7 +5,8 @@ class Karyawan_controller extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->Model('user_model');
+		$this->load->Model('pemilik_model');
+		$this->load->Model('karyawan_model');
 		$this->load->Model('barang_model');
 		$this->load->library('session');
 	}
@@ -27,6 +28,7 @@ class Karyawan_controller extends CI_Controller {
     }
 
     public function lihat_stock_karyawan(){
-        $this->load->view('lihat_stock_karyawan');
+        $data['barang'] = $this->barang_model->get_all_barang();
+        $this->load->view('lihat_stock_karyawan',$data);
     }
 }

@@ -5,7 +5,8 @@ class Pemilik_controller extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->Model('user_model');
+		$this->load->Model('pemilik_model');
+		$this->load->Model('karyawan_model');
 		$this->load->Model('barang_model');
 		$this->load->library('session');
 	}

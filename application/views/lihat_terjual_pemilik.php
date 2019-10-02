@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<style type="text/css">
 
 		body{
-			background: #E5E5E5;
+			background: white;
 			height:100%; 
 			margin:0;
 			padding:0;
@@ -73,18 +73,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
 
         /* The navigation menu links */
-        .sidenav a {
+        .btn {
             padding: 8px 8px 8px 32px;
             text-decoration: none;
             font-size: 25px;
             font-family: Muli;
-            color: #818181;
             display: block;
             margin-top: 30px;
+            color: #818181;
+            background: #363740;
+            
         }
 
         /* When you mouse over the navigation links, change their color */
-        .sidenav a:hover {
+
+        .current, .btn:hover{
+            background: #818181;
             color: #f1f1f1;
         }
 
@@ -177,11 +181,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
     
     <div id="mySidenav" class="sidenav">
-        <div class="logo">Jukimart</div>
-        <a href="<?php echo base_url()?>pemilik_controller">Overview</a>
-        <a href="<?php echo base_url()?>pemilik_controller/lihat_stock">Lihat Stock Barang</a>
-        <a href="<?php echo base_url()?>pemilik_controller/lihat_pesanan">Lihat Data Pemesanan</a>
-        <a href="<?php echo base_url()?>pemilik_controller/lihat_terjual">Lihat Barang Terjual</a>
+        <div class="logo" id="logo">Jukimart</div>
+        <a class="btn" href="<?php echo base_url()?>pemilik_controller">Overview</a>
+        <a class="btn" href="<?php echo base_url()?>pemilik_controller/lihat_stock">Lihat Stock Barang</a>
+        <a class="btn" href="<?php echo base_url()?>pemilik_controller/lihat_pesanan">Lihat Data Pemesanan</a>
+        <a class="btn current" href="<?php echo base_url()?>pemilik_controller/lihat_terjual">Lihat Barang Terjual</a>
     </div>
     <p class="nama">Hi, <?php echo $this->session->userdata("nama")?></p>
     <a href="#"><p class="out">Logout</p></a>

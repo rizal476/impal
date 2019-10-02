@@ -6,6 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta charset="utf-8">
 	<title>Jukimart</title>
     <script type="text/javascript" src="assets/chartjs/Chart.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
 	<style type="text/css">
 
 		body{

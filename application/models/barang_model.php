@@ -15,4 +15,9 @@ class Barang_model extends CI_Model{
         $data = $this->db->get('barang_terjual');
         return $data->result_array();
     }
+
+    public function get_by_id($table,$id){
+        $data = $this->db->select('*')->from($table)->where('id_barang',$id)->get();
+		return $data->result_array();
+    }
 }

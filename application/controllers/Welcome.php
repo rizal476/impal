@@ -22,8 +22,8 @@ class Welcome extends CI_Controller {
 			'username' => $username,
 			'password' =>$password
 			);
-		$cek = $this->pemilik_model->cekLogin("pemilik",$where);
 		$table = "pemilik";
+		$cek = $this->pemilik_model->cekLogin("pemilik",$where);
 		if($cek > 0){
 			$q = $this->pemilik_model->getUser($table,$username);
 			$data_session = array(

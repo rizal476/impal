@@ -1,0 +1,32 @@
+.paragrap {
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    width: 70%;
+    text-align: center;
+}
+
+.board-container {
+    padding:40px;
+    box-sizing:border-box;
+}
+
+.board{
+    height:100%;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    text-decoration: none;
+    border-color: #DFE0EB;
+    font-family: 'Muli', sans-serif;
+}
+
+.board:hover {
+    border-color: black;
+}
+
+#input {
+    text-decoration: none;
+    color: black;
+}

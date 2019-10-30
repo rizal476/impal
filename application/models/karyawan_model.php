@@ -33,6 +33,7 @@ class Karyawan_model extends CI_Model{
         }
         else{
             if ($q){
+                $data["jumlah_barang"] = $data["jumlah_barang"] + $q[0]["jumlah_barang"];
                 $this->db->where('id_barang', $data["id_barang"]);
                 $this->db->update('barang_terjual', $data);
             }

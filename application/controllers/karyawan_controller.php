@@ -59,8 +59,9 @@ class Karyawan_controller extends CI_Controller {
 		}
     }
 
-    public function update_barang(){
-        $this->form_validation->set_rules('id', 'ID Barang', 'required');
+    public function update_barang($id){
+        // $id = $this->input->post('id',true);
+        // var_dump($id);
 		$this->form_validation->set_rules('nama_barang', 'Nama Barang', 'required');
 		$this->form_validation->set_rules('jumlah', 'Jumlah', 'required');
         $this->form_validation->set_rules('jenis', 'Jenis', 'required');
@@ -72,21 +73,19 @@ class Karyawan_controller extends CI_Controller {
 		}
 		else{
             $data = [
-				"id_barang" => $this->input->post('id', true),
+				"id_barang" => $id,
 				"nama_barang" => $this->input->post('nama_barang', true),
 				"keterangan_barang" => $this->input->post('keterangan', true),
                 "jenis_barang" => $this->input->post('jenis', true),
                 "harga_barang" => $this->input->post('harga', true),
                 "jumlah_barang" => $this->input->post('jumlah', true)
             ];
-            // var_dump($data);
             $asli = $this->barang_model->get_by_id('barang_tersedia',$data["id_barang"]);
-            // var_dump($dt);
+            // var_dump($asli);
             $asli[0]["jumlah_barang"] = $asli[0]["jumlah_barang"] - $data["jumlah_barang"];
-            // var_dump($dt[0]["jumlah_barang"]);
-            // var_dump($data["jumlah_barang"]);
+            // var_dump($asli);
             $this->karyawan_model->tambahBarangTerjual($data,$asli);
-			// $this->load->view('input_terjual');
+            redirect('http://localhost/impal/karyawan_controller/input_terjual');
 		}
     }
 
@@ -113,5 +112,9 @@ class Karyawan_controller extends CI_Controller {
 		    $this->karyawan_model->tambahPesanan($data);
 			$this->load->view('input_pemesanan');
 		}
+    }
+
+    public function ajax(){
+        $this->load->view('autofill-ajax');
     }
 }

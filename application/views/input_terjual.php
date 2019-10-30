@@ -42,7 +42,7 @@
                         <div class="w-100"></div>
                         <div class="col mx-auto">
                             <h2 class="d-flex justify-content-center" style="width: 70%; margin: 40px 40px;">Input Barang Terjual</h2>
-                            <form method="post" action="<?php echo base_url()?>karyawan_controller/update_barang">
+                            <form id="form-euy" method="post" action="">
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">ID Barang</label>
                                     <div class="col-sm-10">
@@ -54,49 +54,38 @@
                                                 <?php foreach($id as $row):?>
                                                     <li class="dropdown-item"><?php echo $row["id_barang"];?></li>
                                                 <?php endforeach;?>
-                                                <!-- <li value="one" class="dropdown-item">One</li>
-                                                <li value="two" class="dropdown-item">Two</li>
-                                                <li value="three" class="dropdown-item">Three</li>
-                                                <li value="four" class="dropdown-item">Four</li>
-                                                <li value="five" class="dropdown-item">Five</li> -->
                                             </ul>
                                         </div>
-                                        <!-- <select id="pilih" class="form-control">
-                                            <option value="">Pilih ID Barang</option>
-                                            <?php foreach($id as $row):?>
-                                                <option value="<?php echo $row["id_barang"];?>"><?php echo $row["id_barang"];?></option>
-                                            <?php endforeach;?>
-                                        </select> -->
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Nama Barang</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" placeholder="Nama Barang" name="nama_barang">
+                                        <input id="nama" type="text" class="form-control" placeholder="Nama Barang" name="nama_barang">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Jenis Barang</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" placeholder="Jenis Barang" name="jenis">
+                                        <input id="jenis" type="text" class="form-control" placeholder="Jenis Barang" name="jenis">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Jumlah Barang</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" placeholder="Jumlah Barang" name="jumlah">
+                                        <input id="jumlah" type="text" class="form-control" placeholder="Jumlah Barang" name="jumlah">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Harga Barang</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" placeholder="Harga Barang" name="harga">
+                                        <input id="harga" type="text" class="form-control" placeholder="Harga Barang" name="harga">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Keterangan Barang</label>
                                     <div class="col-sm-10">
-                                        <input type="text" value="Kosong" readonly class="form-control" placeholder="Keterangan Barang" name="keterangan">
+                                        <input id="keterangan" type="text" value="Kosong" readonly class="form-control" placeholder="Keterangan Barang" name="keterangan">
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary" style="float: right; background: #61B3D7; border-color: #61B3D7;">Input</button>
@@ -110,17 +99,23 @@
 </body>
 <script>
     $(function(){
-    //Listen for a click on any of the dropdown items
-    $("#pilih li").click(function(e){
-        e.preventDefault();
-        var selText = $(this).text();
-        // $("#tableButton").text(selText);
-        // //Get the value
-        // var value = $(this).attr("value");
-        // //Put the retrieved value into the hidden input
-        // var result = $("input[name='pp']").val(value);
-        alert(selText);
+        $("#pilih li").click(function(e){
+            e.preventDefault();
+            var selText = $(this).text();
+            $.ajax({
+                url : '<?php echo base_url()?>karyawan_controller/ajax',
+                data : 'id='+selText,
+                success : function(data){
+                    var json = data,
+                    obj = JSON.parse(json);
+                    $("#dropdownMenuButton").text(obj.id_barang);
+                    $("#nama").val(obj.nama_barang);
+                    $("#jenis").val(obj.jenis);
+                    $("#harga").val(obj.harga);
+                    $("#form-euy").attr('action', 'http://localhost/impal/karyawan_controller/update_barang/' + obj.id_barang);
+                }
+            });
+        });
     });
-});
 </script>
 </html>

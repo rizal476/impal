@@ -48,8 +48,7 @@
                             }
                         ?> -->
                         <!-- <?php foreach ($jumlah_tersedia as $b) { echo '"' . $b["jumlah"] . '",';}?> -->
-                        <?php var_dump(count($jumlah_tersedia));?>
-                        
+                        <!-- <?php var_dump(count($jumlah_tersedia));?> -->
                             <div class="chart">
                                 <canvas id="myChart"></canvas>
                             </div>
@@ -61,14 +60,14 @@
     </div>
 </body>
 <script>
-    function getRandomColor() {
-        var letters = '0123456789ABCDEF';
-        var color = '#';
-        for (var i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
         }
-        return color;
-    }
 		var ctx = document.getElementById("myChart").getContext('2d');
 		var myChart = new Chart(ctx, {
 			type: 'bar',
@@ -77,22 +76,58 @@
 				datasets: [{
 					label: 'Jumlah Barang Tersedia',
                     data: [<?php foreach ($jumlah_tersedia as $b) { echo '"' . $b["jumlah_barang"] . '",';}?>],
-                    // backgr
-					backgroundColor: [getRandomColor(), getRandomColor(), getRandomColor()],
+					backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 99, 132, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(255, 99, 132, 0.5)'
+					],
 					borderWidth: 2
                 },
                 {
                     label: 'Jumlah Barang Terjual',
-					data: [12, 5, 3],
+					data: [<?php foreach ($jumlah_terjual as $c) { echo '"' . $c["jumlah_barang"] . '",';}?>],
 					backgroundColor: [
 					'rgba(77, 174, 219, 0.5)',
 					'rgba(77, 174, 219, 0.5)',
-					'rgba(77, 174, 219, 0.5)'
+					'rgba(77, 174, 219, 0.5)',
+                    'rgba(77, 174, 219, 0.5)',
+					'rgba(77, 174, 219, 0.5)',
+					'rgba(77, 174, 219, 0.5)',
+                    'rgba(77, 174, 219, 0.5)',
+					'rgba(77, 174, 219, 0.5)',
+					'rgba(77, 174, 219, 0.5)',
+                    'rgba(77, 174, 219, 0.5)'
 					],
 					borderColor: [
 					'rgba(77, 174, 219, 1)',
 					'rgba(77, 174, 219, 1)',
-					'rgba(77, 174, 219, 1)'
+					'rgba(77, 174, 219, 1)',
+                    'rgba(77, 174, 219, 1)',
+					'rgba(77, 174, 219, 1)',
+					'rgba(77, 174, 219, 1)',
+                    'rgba(77, 174, 219, 1)',
+					'rgba(77, 174, 219, 1)',
+					'rgba(77, 174, 219, 1)',
+                    'rgba(77, 174, 219, 1)'
 					],
 					borderWidth: 2
                 }]

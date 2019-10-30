@@ -32,4 +32,10 @@ class Barang_model extends CI_Model{
         $data = $this->db->get($table);
         return $data->result_array();
     }
+
+    public function get_id_barang(){
+        $this->db->select('id_barang');
+        $data = $this->db->get('barang_tersedia');
+        return $data->result_array();
+    }
 }

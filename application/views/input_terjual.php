@@ -46,7 +46,27 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">ID Barang</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" placeholder="ID Barang" name="id">
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Pilih ID Barang
+                                            </button>
+                                            <ul id="pilih" class="dropdown-menu" aria-labelledby="dropdownMenuButton" name="pp">
+                                                <?php foreach($id as $row):?>
+                                                    <li class="dropdown-item"><?php echo $row["id_barang"];?></li>
+                                                <?php endforeach;?>
+                                                <!-- <li value="one" class="dropdown-item">One</li>
+                                                <li value="two" class="dropdown-item">Two</li>
+                                                <li value="three" class="dropdown-item">Three</li>
+                                                <li value="four" class="dropdown-item">Four</li>
+                                                <li value="five" class="dropdown-item">Five</li> -->
+                                            </ul>
+                                        </div>
+                                        <!-- <select id="pilih" class="form-control">
+                                            <option value="">Pilih ID Barang</option>
+                                            <?php foreach($id as $row):?>
+                                                <option value="<?php echo $row["id_barang"];?>"><?php echo $row["id_barang"];?></option>
+                                            <?php endforeach;?>
+                                        </select> -->
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -76,7 +96,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Keterangan Barang</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" placeholder="Keterangan Barang" name="keterangan">
+                                        <input type="text" value="Kosong" readonly class="form-control" placeholder="Keterangan Barang" name="keterangan">
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary" style="float: right; background: #61B3D7; border-color: #61B3D7;">Input</button>
@@ -88,5 +108,19 @@
         </div>
     </div>
 </body>
-</html>
+<script>
+    $(function(){
+    //Listen for a click on any of the dropdown items
+    $("#pilih li").click(function(e){
+        e.preventDefault();
+        var selText = $(this).text();
+        // $("#tableButton").text(selText);
+        // //Get the value
+        // var value = $(this).attr("value");
+        // //Put the retrieved value into the hidden input
+        // var result = $("input[name='pp']").val(value);
+        alert(selText);
+    });
+});
+</script>
 </html>

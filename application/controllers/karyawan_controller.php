@@ -25,7 +25,8 @@ class Karyawan_controller extends CI_Controller {
     }
 
     public function input_terjual(){
-        $this->load->view('input_terjual');
+        $data['id'] = $this->barang_model->get_id_barang();
+        $this->load->view('input_terjual',$data);
     }
 
     public function lihat_stock_karyawan(){

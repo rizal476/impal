@@ -76,7 +76,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Keterangan Barang</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" placeholder="Keterangan Barang" name="keterangan">
+                                        <input type="text" value="Available" class="form-control" placeholder="Keterangan Barang" name="keterangan" readonly>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary" style="float: right; background: #61B3D7; border-color: #61B3D7;">Input</button>

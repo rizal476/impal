@@ -26,8 +26,8 @@
                         <ul>
                             <li class="menu"><a style="text-decoration : none;" href="<?php echo base_url()?>karyawan_controller"><img src="../assets/image/1.png">Dashboard</a></li>
                             <li class="menu"><a style="text-decoration : none;" href="<?php echo base_url()?>karyawan_controller/input_barang"><img src="../assets/image/1.png">Input Data Barang</a></li>
-                            <li class="menu"><a class="current" style="text-decoration : none;" href="<?php echo base_url()?>karyawan_controller/input_pemesanan"><img src="../assets/image/1.png">Input Data Pemesanan</a></li>
-                            <li class="menu"><a style="text-decoration : none;" href="<?php echo base_url()?>karyawan_controller/input_terjual"><img src="../assets/image/1.png">Input Barang Terjual</a></li>
+                            <li class="menu"><a style="text-decoration : none;" href="<?php echo base_url()?>karyawan_controller/input_pemesanan"><img src="../assets/image/1.png">Input Data Pemesanan</a></li>
+                            <li class="menu"><a class="current" style="text-decoration : none;" href="<?php echo base_url()?>karyawan_controller/input_terjual"><img src="../assets/image/1.png">Input Barang Terjual</a></li>
                             <li class="menu"><a style="text-decoration : none;" href="<?php echo base_url()?>karyawan_controller/lihat_stock_karyawan"><img src="../assets/image/1.png">Lihat Stock Barang</a></li>
                             <li class="menu"><a style="text-decoration : none; margin-top: 100px;" href="#"><img src="../assets/image/1.png">Logout</a></li>
                         </ul>
@@ -41,8 +41,8 @@
                         </div>
                         <div class="w-100"></div>
                         <div class="col mx-auto">
-                            <h2 class="d-flex justify-content-center" style="width: 70%; margin: 40px 40px;">Input Data Pemesanan</h2>
-                            <form method="post" action="<?php echo base_url()?>karyawan_controller/tambah_pesanan">
+                            <h2 class="d-flex justify-content-center" style="width: 70%; margin: 40px 40px;">Input Barang Terjual</h2>
+                            <form method="post" action="<?php echo base_url()?>karyawan_controller/update_barang">
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">ID Barang</label>
                                     <div class="col-sm-10">

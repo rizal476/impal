@@ -1,0 +1,13 @@
+<script>
+    $.ajax({
+        type: 'POST',
+        url: 'v_grafik.php',
+        success: function (data) {
+            lineChartData = data;//alert(JSON.stringify(data));
+            var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Line(lineChartData);
+
+            var ctx = document.getElementById("canvas").getContext("2d");
+            window.myLine = new Chart(ctx).Line(lineChartData, {responsive: true});
+        } 
+    });
+</script>

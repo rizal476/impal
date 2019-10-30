@@ -12,7 +12,13 @@ class Pemilik_controller extends CI_Controller {
 	}
 	
 	public function index(){
-		$this->load->view('pemilik_page');
+		$data = array(
+			'nama_tersedia' => $this->barang_model->get_nama_barang('barang_tersedia'),
+			'nama_terjual' => $this->barang_model->get_nama_barang('barang_terjual'),
+			'jumlah_tersedia' => $this->barang_model->get_jumlah_barang('barang_tersedia'),
+			'jumlah_terjual' => $this->barang_model->get_jumlah_barang('barang_terjual')
+		);
+		$this->load->view('pemilik_page',$data);
 	}
 
 	public function lihat_stock(){

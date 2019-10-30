@@ -19,7 +19,7 @@
                 <div class="col-3">
                     <nav id="sidebar">
                         <div class="sidebar-header">
-                            <h3>Juki Mart</h3>
+                            <h3><img style="width: 80px; height: 80px;" src="../assets/image/logo.png">Juki Mart</h3>
                             <br>
                             <br>
                         </div>
@@ -42,7 +42,7 @@
                         <div class="w-100"></div>
                         <div class="col mx-auto">
                             <h2 class="d-flex justify-content-center" style="width: 70%; margin: 40px 40px;">Input Data Pemesanan</h2>
-                            <form method="post" action="<?php echo base_url()?>karyawan_controller/tambah_barang">
+                            <form method="post" action="<?php echo base_url()?>karyawan_controller/tambah_pesanan">
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">ID Barang</label>
                                     <div class="col-sm-10">

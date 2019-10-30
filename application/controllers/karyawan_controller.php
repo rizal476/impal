@@ -88,4 +88,29 @@ class Karyawan_controller extends CI_Controller {
 			// $this->load->view('input_terjual');
 		}
     }
+
+    public function tambah_pesanan(){
+        $this->form_validation->set_rules('id', 'ID Barang', 'required');
+		$this->form_validation->set_rules('nama_barang', 'Nama Barang', 'required');
+		$this->form_validation->set_rules('jumlah', 'Jumlah', 'required');
+        $this->form_validation->set_rules('jenis', 'Jenis', 'required');
+        $this->form_validation->set_rules('harga', 'Harga', 'required');
+        $this->form_validation->set_rules('keterangan', 'Keterangan', 'required');
+
+		if ($this->form_validation->run() == FALSE){
+			$this->load->view('lihat_stock_karyawan');
+		}
+		else{
+            $data = [
+				"id_barang" => $this->input->post('id', true),
+				"nama_barang" => $this->input->post('nama_barang', true),
+				"keterangan_barang" => $this->input->post('keterangan', true),
+                "jenis_barang" => $this->input->post('jenis', true),
+                "harga_barang" => $this->input->post('harga', true),
+                "jumlah_barang" => $this->input->post('jumlah', true)
+			];
+		    $this->karyawan_model->tambahPesanan($data);
+			$this->load->view('input_pemesanan');
+		}
+    }
 }

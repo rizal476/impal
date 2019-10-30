@@ -45,4 +45,8 @@ class Karyawan_model extends CI_Model{
         
     }
 
+    public function tambahPesanan($data){
+        $this->db->insert('pesanan',$data);
+    }
+
 }

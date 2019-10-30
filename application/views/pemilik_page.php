@@ -42,6 +42,14 @@
                         </div>
                         <div class="w-100"></div>
                         <div class="col">
+                        <!-- <?php
+                            foreach ($nama_tersedia as $a){
+                                print_r($a["nama_barang"]);
+                            }
+                        ?> -->
+                        <!-- <?php foreach ($jumlah_tersedia as $b) { echo '"' . $b["jumlah"] . '",';}?> -->
+                        <?php var_dump(count($jumlah_tersedia));?>
+                        
                             <div class="chart">
                                 <canvas id="myChart"></canvas>
                             </div>
@@ -53,24 +61,24 @@
     </div>
 </body>
 <script>
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
 		var ctx = document.getElementById("myChart").getContext('2d');
 		var myChart = new Chart(ctx, {
-			type: 'line',
+			type: 'bar',
 			data: {
-				labels: ["Oreo", "Fanta", "Tango" ],
+				labels: [<?php foreach ($nama_tersedia as $a) { echo '"' . $a["nama_barang"] . '",';}?>],
 				datasets: [{
 					label: 'Jumlah Barang Tersedia',
-					data: [50, 30, 20],
-					backgroundColor: [
-					'rgba(255, 99, 132, 0.2)',
-					'rgba(54, 162, 235, 0.2)',
-					'rgba(255, 206, 86, 0.2)'
-					],
-					borderColor: [
-					'rgba(255,99,132,1)',
-					'rgba(54, 162, 235, 1)',
-					'rgba(255, 206, 86, 1)'
-					],
+                    data: [<?php foreach ($jumlah_tersedia as $b) { echo '"' . $b["jumlah_barang"] . '",';}?>],
+                    // backgr
+					backgroundColor: [getRandomColor(), getRandomColor(), getRandomColor()],
 					borderWidth: 2
                 },
                 {

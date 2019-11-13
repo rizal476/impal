@@ -24,19 +24,19 @@
                             <br>
                         </div>
                         <ul>
-                            <li class="menu"><a style="text-decoration : none;" href="<?php echo base_url()?>karyawan_controller"><img src="../assets/image/1.png">Dashboard</a></li>
-                            <li class="menu"><a style="text-decoration : none;" href="<?php echo base_url()?>karyawan_controller/input_barang"><img src="../assets/image/1.png">Input Data Barang</a></li>
-                            <li class="menu"><a style="text-decoration : none;" href="<?php echo base_url()?>karyawan_controller/input_pemesanan"><img src="../assets/image/1.png">Input Data Pemesanan</a></li>
-                            <li class="menu"><a class="current" style="text-decoration : none;" href="<?php echo base_url()?>karyawan_controller/input_terjual"><img src="../assets/image/1.png">Input Barang Terjual</a></li>
-                            <li class="menu"><a style="text-decoration : none;" href="<?php echo base_url()?>karyawan_controller/lihat_stock_karyawan"><img src="../assets/image/1.png">Lihat Stock Barang</a></li>
-                            <li class="menu"><a style="text-decoration : none; margin-top: 100px;" href="#"><img src="../assets/image/1.png">Logout</a></li>
+                            <li class="menu"><a style="text-decoration : none;" href="<?php echo base_url()?>ControllerKaryawan"><img src="../assets/image/1.png">Dashboard</a></li>
+                            <li class="menu"><a style="text-decoration : none;" href="<?php echo base_url()?>ControllerKaryawan/input_barang"><img src="../assets/image/a.png">Input Data Barang</a></li>
+                            <li class="menu"><a style="text-decoration : none;" href="<?php echo base_url()?>ControllerKaryawan/input_pemesanan"><img src="../assets/image/b.png">Input Data Pemesanan</a></li>
+                            <li class="menu"><a class="current" style="text-decoration : none;" href="<?php echo base_url()?>ControllerKaryawan/input_terjual"><img src="../assets/image/c.png">Input Barang Terjual</a></li>
+                            <li class="menu"><a style="text-decoration : none;" href="<?php echo base_url()?>ControllerKaryawan/lihat_stock_karyawan"><img src="../assets/image/2.png">Lihat Stock Barang</a></li>
+                            <li class="menu"><a style="text-decoration : none; margin-top: 100px;" href="<?php echo base_url()?>ControllerLogin/logout"><img src="../assets/image/5.png">Logout</a></li>
                         </ul>
                     </nav>
                 </div>
                 <div class="col-9">
                     <div class="row">
                         <div class="col text-right">
-                            <a style="text-decoration : none; float: right;" href="<?php echo base_url()?>Welcome/logout"><p class="nama">Logout</p></a>
+                            <a style="text-decoration : none; float: right;" href="<?php echo base_url()?>ControllerLogin/logout"><p class="nama">Logout</p></a>
                             <div class="nama" style="float: right;">Hi, <?php echo $this->session->userdata("nama")?></div>
                         </div>
                         <div class="w-100"></div>
@@ -56,6 +56,12 @@
                                                 <?php endforeach;?>
                                             </ul>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Tanggal Terjual</label>
+                                    <div class="col-sm-10">
+                                        <input readonly type="text" class="form-control" value="<?php echo $date;?>" name="tanggal">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -103,7 +109,7 @@
             e.preventDefault();
             var selText = $(this).text();
             $.ajax({
-                url : '<?php echo base_url()?>karyawan_controller/ajax',
+                url : '<?php echo base_url()?>ControllerKaryawan/ajax',
                 data : 'id='+selText,
                 success : function(data){
                     var json = data,
@@ -112,7 +118,8 @@
                     $("#nama").val(obj.nama_barang);
                     $("#jenis").val(obj.jenis);
                     $("#harga").val(obj.harga);
-                    $("#form-euy").attr('action', 'http://localhost/impal/karyawan_controller/update_barang/' + obj.id_barang);
+                    $("#form-euy").attr('action', '<?php echo base_url()?>ControllerKaryawan/update_barang/' + obj.id_barang);
+                    // $("#form-euy").attr('action', '<?php echo base_url()?>ControllerKaryawan');
                 }
             });
         });

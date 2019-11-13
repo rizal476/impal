@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class ControllerLogin extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->Model('pemilik_model');
-		$this->load->Model('karyawan_model');
+		$this->load->Model('PemilikModel');
+		$this->load->Model('KaryawanModel');
 		$this->load->library('session');
 	}
 	
@@ -23,28 +23,28 @@ class Welcome extends CI_Controller {
 			'password' =>$password
 			);
 		$table = "pemilik";
-		$cek = $this->pemilik_model->cekLogin("pemilik",$where);
+		$cek = $this->PemilikModel->cekLogin("pemilik",$where);
 		if($cek > 0){
-			$q = $this->pemilik_model->getUser($table,$username);
+			$q = $this->PemilikModel->getUser($table,$username);
 			$data_session = array(
 				'nama' => $q[0]["nama"],
 				'alamat' => $q[0]["alamat"],
 				'umur' => $q[0]["umur"]
 				);
 			$this->session->set_userdata($data_session);
-			redirect("pemilik_controller");
+			redirect("ControllerPemilik");
 		} else if($cek == 0){
-			$cek = $this->karyawan_model->cekLogin("karyawan",$where);
+			$cek = $this->KaryawanModel->cekLogin("karyawan",$where);
 			$table = "karyawan";
 			if($cek > 0){
-				$q = $this->karyawan_model->getUser($table,$username);
+				$q = $this->KaryawanModel->getUser($table,$username);
 				$data_session = array(
 					'nama' => $q[0]["nama"],
 					'alamat' => $q[0]["alamat"],
 					'umur' => $q[0]["umur"]
 					);
 				$this->session->set_userdata($data_session);
-				redirect("karyawan_controller");
+				redirect("ControllerKaryawan");
 			} else {
 				echo "Username dan password salah !";
 			}
@@ -53,6 +53,6 @@ class Welcome extends CI_Controller {
 
 	public function logout(){
 		$this->session->sess_destroy();
-		redirect('Welcome');
+		redirect('ControllerLogin');
 	}
 }

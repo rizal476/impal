@@ -19,7 +19,7 @@
                     <div class="row h-100">
                         <div class="col-6 mx-auto d-flex justify-content-center align-items-center">
                             <div class="login-form d-flex justify-content-center align-items-center">
-                                <form method="post" action="<?php echo base_url()?>Welcome/aksiLogin" class="">
+                                <form method="post" action="<?php echo base_url()?>ControllerLogin/aksiLogin" class="">
                                     <div>
                                         <input class="user-form" type="text" name="username" placeholder="Username">
                                     </div>

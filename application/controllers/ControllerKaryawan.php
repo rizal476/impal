@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Karyawan_controller extends CI_Controller {
+class ControllerKaryawan extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->Model('pemilik_model');
-		$this->load->Model('karyawan_model');
-        $this->load->Model('barang_model');
+		$this->load->Model('PemilikModel');
+		$this->load->Model('KaryawanModel');
+        $this->load->Model('BarangModel');
         $this->load->library('form_validation');
 		$this->load->library('session');
 	}
@@ -17,20 +17,26 @@ class Karyawan_controller extends CI_Controller {
     }
     
     public function input_barang(){
-        $this->load->view('input_barang');
+        date_default_timezone_set('Asia/Jakarta');
+        $data['date'] = date('Y-m-d H:i:s');
+        $this->load->view('input_barang', $data);
     }
 
     public function input_pemesanan(){
-        $this->load->view('input_pemesanan');
+        date_default_timezone_set('Asia/Jakarta');
+        $data['date'] = date('Y-m-d H:i:s');
+        $this->load->view('input_pemesanan', $data);
     }
 
     public function input_terjual(){
-        $data['id'] = $this->barang_model->get_id_barang();
+        $data['id'] = $this->BarangModel->get_id_barang();
+        date_default_timezone_set('Asia/Jakarta');
+        $data['date'] = date('Y-m-d H:i:s');
         $this->load->view('input_terjual',$data);
     }
 
     public function lihat_stock_karyawan(){
-        $data['barang'] = $this->barang_model->get_all_barang();
+        $data['barang'] = $this->BarangModel->get_all_barang();
         $this->load->view('lihat_stock_karyawan',$data);
     }
 
@@ -52,16 +58,17 @@ class Karyawan_controller extends CI_Controller {
 				"keterangan_barang" => $this->input->post('keterangan', true),
                 "jenis_barang" => $this->input->post('jenis', true),
                 "harga_barang" => $this->input->post('harga', true),
-                "jumlah_barang" => $this->input->post('jumlah', true)
+                "jumlah_barang" => $this->input->post('jumlah', true),
+                "tanggal" => $this->input->post('tanggal', true)
 			];
-		    $this->karyawan_model->tambahBarang($data);
-			$this->load->view('input_barang');
+            $this->BarangModel->tambahBarang($data);
+            date_default_timezone_set('Asia/Jakarta');
+            $data['date'] = date('Y-m-d H:i:s');
+			$this->load->view('input_barang', $data);
 		}
     }
 
     public function update_barang($id){
-        // $id = $this->input->post('id',true);
-        // var_dump($id);
 		$this->form_validation->set_rules('nama_barang', 'Nama Barang', 'required');
 		$this->form_validation->set_rules('jumlah', 'Jumlah', 'required');
         $this->form_validation->set_rules('jenis', 'Jenis', 'required');
@@ -78,14 +85,15 @@ class Karyawan_controller extends CI_Controller {
 				"keterangan_barang" => $this->input->post('keterangan', true),
                 "jenis_barang" => $this->input->post('jenis', true),
                 "harga_barang" => $this->input->post('harga', true),
+                "tanggal" => $this->input->post('tanggal', true),
                 "jumlah_barang" => $this->input->post('jumlah', true)
             ];
-            $asli = $this->barang_model->get_by_id('barang_tersedia',$data["id_barang"]);
+            $asli = $this->BarangModel->get_by_id('barang_tersedia',$data["id_barang"]);
             // var_dump($asli);
             $asli[0]["jumlah_barang"] = $asli[0]["jumlah_barang"] - $data["jumlah_barang"];
             // var_dump($asli);
-            $this->karyawan_model->tambahBarangTerjual($data,$asli);
-            redirect('http://localhost/impal/karyawan_controller/input_terjual');
+            $this->BarangModel->tambahBarangTerjual($data,$asli);
+            redirect(base_url().'/karyawan_controller/input_terjual');
 		}
     }
 
@@ -94,11 +102,11 @@ class Karyawan_controller extends CI_Controller {
 		$this->form_validation->set_rules('nama_barang', 'Nama Barang', 'required');
 		$this->form_validation->set_rules('jumlah', 'Jumlah', 'required');
         $this->form_validation->set_rules('jenis', 'Jenis', 'required');
-        $this->form_validation->set_rules('harga', 'Harga', 'required');
         $this->form_validation->set_rules('keterangan', 'Keterangan', 'required');
+        $this->form_validation->set_rules('tanggal', 'Tanggal', 'required');
 
 		if ($this->form_validation->run() == FALSE){
-			$this->load->view('lihat_stock_karyawan');
+			$this->load->view('karyawan_page');
 		}
 		else{
             $data = [
@@ -106,11 +114,13 @@ class Karyawan_controller extends CI_Controller {
 				"nama_barang" => $this->input->post('nama_barang', true),
 				"keterangan_barang" => $this->input->post('keterangan', true),
                 "jenis_barang" => $this->input->post('jenis', true),
-                "harga_barang" => $this->input->post('harga', true),
-                "jumlah_barang" => $this->input->post('jumlah', true)
+                "jumlah_barang" => $this->input->post('jumlah', true),
+                "tanggal" => $this->input->post('tanggal', true)
 			];
-		    $this->karyawan_model->tambahPesanan($data);
-			$this->load->view('input_pemesanan');
+            $this->BarangModel->tambahPesanan($data);
+            date_default_timezone_set('Asia/Jakarta');
+            $data['date'] = date('Y-m-d H:i:s');
+			$this->load->view('input_pemesanan', $data);
 		}
     }
 

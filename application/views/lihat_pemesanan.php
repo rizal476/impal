@@ -53,7 +53,7 @@
                                     <button type="submit" class="btn btn-primary" style="margin-left: 10px; float: right; background: #61B3D7; border-color: #61B3D7;">Lihat Semua</button>
                                 </div>
                             </form>
-                            <table class="table table-striped" style="width: 80%;">
+                            <table class="table table-striped" style="width: 80%; margin-top:50px;">
                                 <thead>
                                     <tr>
                                         <th scope="col">ID Barang</th>
@@ -66,6 +66,21 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <tr>
+                                        <?php foreach ($barang as $item) :  ?>
+                                            <!-- <th scope="row"></th> -->
+                                            <td class="text-center"><?= $item["id_barang"]; ?></td>
+                                            <td class="text-center"><?= $item["nama_barang"]; ?></td>
+                                            <td class="text-center"><?= $item["jenis_barang"]; ?></td>
+                                            <td class="text-center"><?= $item["jumlah_barang"]; ?></td>
+                                            <td class="text-center"><?= $item["tanggal"]; ?></td>
+                                            <td class="text-center"><?= $item["keterangan_barang"]; ?></td>
+                                            <!-- <td class="text-center">
+                                                <a href="<?= base_url(); ?>loggedHome/ubahSepatu/<?= $item["id_barang"] ?>" class="badge badge-success float-center" ?>ubah</a>
+                                            </td> -->
+                                    </tr>
+                                        <?php endforeach ?>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

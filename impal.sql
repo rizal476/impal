@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2019 at 02:15 AM
+-- Generation Time: Nov 13, 2019 at 04:56 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.6
 
@@ -34,16 +34,17 @@ CREATE TABLE `barang_terjual` (
   `keterangan_barang` varchar(255) DEFAULT NULL,
   `jenis_barang` varchar(255) DEFAULT NULL,
   `harga_barang` int(10) DEFAULT NULL,
-  `jumlah_barang` int(5) DEFAULT NULL
+  `jumlah_barang` int(5) DEFAULT NULL,
+  `tanggal` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `barang_terjual`
 --
 
-INSERT INTO `barang_terjual` (`id_barang`, `nama_barang`, `keterangan_barang`, `jenis_barang`, `harga_barang`, `jumlah_barang`) VALUES
-('brg001', 'oreo', 'Kosong', 'makanan', 1000, 110),
-('brg002', 'asd', 'Kosong', 'qwe', 1000, 10);
+INSERT INTO `barang_terjual` (`id_barang`, `nama_barang`, `keterangan_barang`, `jenis_barang`, `harga_barang`, `jumlah_barang`, `tanggal`) VALUES
+('brg001', 'oreo', 'Kosong', 'makanan', 1000, 45, '0000-00-00'),
+('brg002', 'fanta', 'Kosong', 'minuman', 2004, 20, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -57,17 +58,17 @@ CREATE TABLE `barang_tersedia` (
   `keterangan_barang` varchar(255) DEFAULT NULL,
   `jenis_barang` varchar(255) DEFAULT NULL,
   `harga_barang` int(10) DEFAULT NULL,
-  `jumlah_barang` int(5) DEFAULT NULL
+  `jumlah_barang` int(5) DEFAULT NULL,
+  `tanggal` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `barang_tersedia`
 --
 
-INSERT INTO `barang_tersedia` (`id_barang`, `nama_barang`, `keterangan_barang`, `jenis_barang`, `harga_barang`, `jumlah_barang`) VALUES
-('brg002', 'asd', 'Available', 'qwe', 1000, 19),
-('brg003', 'tango', 'available', 'makanan', 7000, 20),
-('brg004', 'asd', 'qwe', 'qwe', 1000, 39);
+INSERT INTO `barang_tersedia` (`id_barang`, `nama_barang`, `keterangan_barang`, `jenis_barang`, `harga_barang`, `jumlah_barang`, `tanggal`) VALUES
+('brg001', 'oreo', 'Available', 'makanan', 1000, 90, '2019-11-13'),
+('brg003', 'qwe', 'Available', 'qwe', 123, 123123, '2019-11-13');
 
 -- --------------------------------------------------------
 
@@ -105,13 +106,6 @@ CREATE TABLE `mengelola` (
   `id_barang` char(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `mengelola`
---
-
-INSERT INTO `mengelola` (`username_karyawan`, `id_barang`) VALUES
-('rifkuy1234', 'brg003');
-
 -- --------------------------------------------------------
 
 --
@@ -147,20 +141,16 @@ CREATE TABLE `pesanan` (
   `nama_barang` varchar(50) DEFAULT NULL,
   `keterangan_barang` varchar(255) DEFAULT NULL,
   `jenis_barang` varchar(255) DEFAULT NULL,
-  `harga_barang` int(10) DEFAULT NULL,
-  `jumlah_barang` int(5) DEFAULT NULL
+  `jumlah_barang` int(5) DEFAULT NULL,
+  `tanggal` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pesanan`
 --
 
-INSERT INTO `pesanan` (`id_barang`, `nama_barang`, `keterangan_barang`, `jenis_barang`, `harga_barang`, `jumlah_barang`) VALUES
-('brg001', 'oreo', 'available', 'makanan', 10000, 50),
-('brg002', 'fanta', 'available', 'minuman', 5000, 30),
-('brg003', 'tango', 'available', 'makanan', 7000, 20),
-('brg004', 'asd', 'qwe', 'qwe', 1000, 39),
-('brg005', 'asd', 'qwe', 'qwe', 1000, 39);
+INSERT INTO `pesanan` (`id_barang`, `nama_barang`, `keterangan_barang`, `jenis_barang`, `jumlah_barang`, `tanggal`) VALUES
+('brg001', 'oreo', 'Kosong', 'makanan', 123, '2019-11-13');
 
 --
 -- Indexes for dumped tables

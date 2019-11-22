@@ -27,9 +27,9 @@
                         </div>
                         <ul>
                             <li class="menu"><a class="current" style="text-decoration : none;" href="<?php echo base_url()?>ControllerPemilik"><img src="assets/image/1.png">Overview</a></li>
-                            <li class="menu"><a style="text-decoration : none;" href="<?php echo base_url()?>ControllerPemilik/lihat_stock"><img src="assets/image/2.png">Lihat Stock Barang</a></li>
-                            <li class="menu"><a style="text-decoration : none;" href="<?php echo base_url()?>ControllerPemilik/lihat_pesanan"><img src="assets/image/1.png">Lihat Data Pemesanan</a></li>
-                            <li class="menu"><a style="text-decoration : none;" href="<?php echo base_url()?>ControllerPemilik/lihat_terjual"><img src="assets/image/1.png">Lihat Barang Terjual</a></li>
+                            <li class="menu"><a style="text-decoration : none;" href="<?php echo base_url()?>ControllerPemilik/lihat_stock"><img src="assets/image/3.png">Lihat Stock Barang</a></li>
+                            <li class="menu"><a style="text-decoration : none;" href="<?php echo base_url()?>ControllerPemilik/lihat_pesanan"><img src="assets/image/4.png">Lihat Data Pemesanan</a></li>
+                            <li class="menu"><a style="text-decoration : none;" href="<?php echo base_url()?>ControllerPemilik/lihat_terjual"><img src="assets/image/6.png">Lihat Barang Terjual</a></li>
                             <li class="menu"><a style="text-decoration : none; margin-top: 100px;" href="<?php base_url()?>ControllerLogin/logout"><img src="assets/image/5.png">Logout</a></li>
                         </ul>
                     </nav>
@@ -42,6 +42,12 @@
                         </div>
                         <div class="w-100"></div>
                         <div class="col">
+                        <!-- <?php
+                            echo "<pre>";
+                            var_dump($nama_terjual);
+                            var_dump($jumlah_tersedia);
+                            echo "</pre>";
+                        ?> -->
                         <!-- <?php
                             foreach ($nama_tersedia as $a){
                                 print_r($a["nama_barang"]);

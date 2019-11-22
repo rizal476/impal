@@ -42,11 +42,20 @@
                         <div class="w-100"></div>
                         <div class="col mx-auto">
                             <h2 class="d-flex justify-content-center" style="width: 70%; margin: 40px 40px;">Input Data Pemesanan</h2>
-                            <form method="post" action="<?php echo base_url()?>ControllerKaryawan/tambah_pesanan">
+                            <form id=form-euy method="post" action="">
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">ID Barang</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" placeholder="ID Barang" name="id">
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Pilih ID Barang
+                                            </button>
+                                            <ul id="pilih" class="dropdown-menu" aria-labelledby="dropdownMenuButton" name="id">
+                                                <?php foreach($id as $row):?>
+                                                    <li class="dropdown-item"><?php echo $row["id_barang"];?></li>
+                                                <?php endforeach;?>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -58,13 +67,13 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Nama Barang</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" placeholder="Nama Barang" name="nama_barang">
+                                        <input id="nama_brg" type="text" class="form-control" placeholder="Nama Barang" name="nama_barang">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Jenis Barang</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" placeholder="Jenis Barang" name="jenis">
+                                        <input id="jenis_brg" type="text" class="form-control" placeholder="Jenis Barang" name="jenis">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -88,5 +97,25 @@
         </div>
     </div>
 </body>
-</html>
+<script>
+    $(function(){
+        $("#pilih li").click(function(e){
+            e.preventDefault();
+            var selText = $(this).text();
+            $.ajax({
+                url : '<?php echo base_url()?>ControllerKaryawan/ajax',
+                data : 'id='+selText,
+                success : function(data){
+                    var json = data,
+                    obj = JSON.parse(json);
+                    $("#dropdownMenuButton").text(obj.id_barang);
+                    $("#nama_brg").val(obj.nama_barang);
+                    $("#jenis_brg").val(obj.jenis);
+                    $("#form-euy").attr('action', '<?php echo base_url()?>ControllerKaryawan/tambah_pesanan/' + obj.id_barang);
+                    // $("#form-euy").attr('action', '<?php echo base_url()?>ControllerKaryawan');
+                }
+            });
+        });
+    });
+</script>
 </html>

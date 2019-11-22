@@ -34,7 +34,8 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="col-3"></div>
+                        <div class="col-3">
+                        <h2 class="mx-auto"><img style="width: 80px; height: 80px;" src="assets/image/logo.png">Juki Mart</h2>
                     </div>
                 </div>
             </div>

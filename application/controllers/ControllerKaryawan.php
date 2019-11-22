@@ -23,6 +23,7 @@ class ControllerKaryawan extends CI_Controller {
     }
 
     public function input_pemesanan(){
+        $data['id'] = $this->BarangModel->get_id_barang();
         date_default_timezone_set('Asia/Jakarta');
         $data['date'] = date('Y-m-d H:i:s');
         $this->load->view('input_pemesanan', $data);
@@ -93,12 +94,11 @@ class ControllerKaryawan extends CI_Controller {
             $asli[0]["jumlah_barang"] = $asli[0]["jumlah_barang"] - $data["jumlah_barang"];
             // var_dump($asli);
             $this->BarangModel->tambahBarangTerjual($data,$asli);
-            redirect(base_url().'/karyawan_controller/input_terjual');
+            redirect(base_url().'/ControllerKaryawan/input_terjual');
 		}
     }
 
-    public function tambah_pesanan(){
-        $this->form_validation->set_rules('id', 'ID Barang', 'required');
+    public function tambah_pesanan($id){
 		$this->form_validation->set_rules('nama_barang', 'Nama Barang', 'required');
 		$this->form_validation->set_rules('jumlah', 'Jumlah', 'required');
         $this->form_validation->set_rules('jenis', 'Jenis', 'required');
@@ -110,17 +110,21 @@ class ControllerKaryawan extends CI_Controller {
 		}
 		else{
             $data = [
-				"id_barang" => $this->input->post('id', true),
+				"id_barang" => $id,
 				"nama_barang" => $this->input->post('nama_barang', true),
 				"keterangan_barang" => $this->input->post('keterangan', true),
                 "jenis_barang" => $this->input->post('jenis', true),
                 "jumlah_barang" => $this->input->post('jumlah', true),
                 "tanggal" => $this->input->post('tanggal', true)
-			];
+            ];
+            // echo "<pre>";
+            // var_dump($data);
+            // echo "</pre>";
             $this->BarangModel->tambahPesanan($data);
+            $data['id'] = $this->BarangModel->get_id_barang();
             date_default_timezone_set('Asia/Jakarta');
             $data['date'] = date('Y-m-d H:i:s');
-			$this->load->view('input_pemesanan', $data);
+            redirect(base_url().'/ControllerKaryawan/input_pemesanan');
 		}
     }
 

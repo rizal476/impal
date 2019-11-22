@@ -46,7 +46,10 @@ class ControllerLogin extends CI_Controller {
 				$this->session->set_userdata($data_session);
 				redirect("ControllerKaryawan");
 			} else {
-				echo "Username dan password salah !";
+				echo "<script>
+					alert('Username atau Password salah!');
+					window.location.href='" . base_url() . "';
+					</script>";
 			}
 		}
 	}

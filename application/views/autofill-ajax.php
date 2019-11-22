@@ -1,7 +1,7 @@
 <?php
     $this->load->database(); 
     $id = $this->input->get('id');
-    $data =  $this->barang_model->get_by_id('barang_tersedia',$id);
+    $data =  $this->BarangModel->get_by_id('barang_tersedia',$id);
     $dt = array(
         'id_barang' => $data[0]['id_barang'],
         'nama_barang' => $data[0]['nama_barang'],

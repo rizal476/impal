@@ -50,11 +50,29 @@ class BarangModel extends CI_Model{
     }
 
     public function tambahPesanan($data){
-        $this->db->insert('pesanan',$data);
+        $q = $this->db->select('*')->from('pesanan')->where('id_barang',$data["id_barang"])->get();
+        $q = $q->result_array();
+        // echo "<pre>";
+        // var_dump($q);
+        // echo "</pre>";
+        if ($q){
+            $data["jumlah_barang"] = $data["jumlah_barang"] + $q[0]["jumlah_barang"];
+            echo "<pre>";
+            var_dump($data);
+            echo "</pre>";
+            $this->db->where('id_barang', $data["id_barang"]);
+            $this->db->update('pesanan', $data);
+        }
+        // echo "<pre>";
+        // var_dump($data);
+        // echo "</pre>";
+        else{
+            $this->db->insert('pesanan', $data);
+        }
     }
 
     public function tambahBarangTerjual($data,$hasil){
-        $q = $this->barang_model->get_by_id('barang_terjual',$data["id_barang"]);
+        $q = $this->BarangModel->get_by_id('barang_terjual',$data["id_barang"]);
         // var_dump($q[0]["jumlah_barang"]);
         // $data["id_barang"] = $data["id_barang"] + $q[0]["jumlah_barang"];
         // var_dump($data["id_barang"]);

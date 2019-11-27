@@ -42,7 +42,7 @@
                         </div>
                         <div class="w-100"></div>
                         <div class="col-10" style="margin-top: 150px;">
-                            <p class="paragrap mx-auto">Halo, Anda telah login sebagi Karyawan, <?php echo $this->session->userdata("nama")?>. Berikut menu yang dapat anda gunakan</p>
+                            <p class="paragrap mx-auto">Halo, Anda telah login sebagai Karyawan, <?php echo $this->session->userdata("nama")?>. Berikut menu yang dapat anda gunakan</p>
                         </div>
                         <div class="w-100"></div>
                     </div>

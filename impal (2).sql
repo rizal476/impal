@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2019 at 04:56 PM
+-- Generation Time: Nov 27, 2019 at 06:02 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.6
 
@@ -43,8 +43,9 @@ CREATE TABLE `barang_terjual` (
 --
 
 INSERT INTO `barang_terjual` (`id_barang`, `nama_barang`, `keterangan_barang`, `jenis_barang`, `harga_barang`, `jumlah_barang`, `tanggal`) VALUES
-('brg001', 'oreo', 'Kosong', 'makanan', 1000, 45, '0000-00-00'),
-('brg002', 'fanta', 'Kosong', 'minuman', 2004, 20, '0000-00-00');
+('brg001', 'oreo', 'Kosong', 'makanan', 1000, 80, '2019-11-27'),
+('brg002', 'Cocacola', 'Kosong', 'minuman', 5000, 153, '2019-11-20'),
+('brg003', 'qwe', 'Kosong', 'qwe', 123, 123, '2019-11-20');
 
 -- --------------------------------------------------------
 
@@ -67,8 +68,7 @@ CREATE TABLE `barang_tersedia` (
 --
 
 INSERT INTO `barang_tersedia` (`id_barang`, `nama_barang`, `keterangan_barang`, `jenis_barang`, `harga_barang`, `jumlah_barang`, `tanggal`) VALUES
-('brg001', 'oreo', 'Available', 'makanan', 1000, 90, '2019-11-13'),
-('brg003', 'qwe', 'Available', 'qwe', 123, 123123, '2019-11-13');
+('brg001', 'oreo', 'Available', 'makanan', 1000, 55, '2019-11-13');
 
 -- --------------------------------------------------------
 
@@ -93,7 +93,7 @@ CREATE TABLE `karyawan` (
 INSERT INTO `karyawan` (`username`, `username_pemilik`, `password`, `role`, `nama`, `alamat`, `umur`) VALUES
 ('hafikeren1', 'yuleo12345', 'wilda', 2, 'hafiyy viazola', 'Cijaura Barat No.5', 20),
 ('rifkuy1234', 'yuleo12345', 'nadia', 2, 'rifky rivaldi', 'Baleendah No.7', 21),
-('rizalgg123', 'yuleo12345', 'nadilla', 2, 'rizal kusuma', 'Setiabudi No.20', 20);
+('rizalgg123', 'yuleo12345', 'naruto', 2, 'rizal kusuma', 'Setiabudi No.20', 20);
 
 -- --------------------------------------------------------
 
@@ -126,8 +126,6 @@ CREATE TABLE `pemilik` (
 --
 
 INSERT INTO `pemilik` (`username`, `password`, `role`, `nama`, `alamat`, `umur`) VALUES
-('nauffan123', 'naura', 1, 'Nauffa M', 'Cibadak No.7', 21),
-('wisnugg123', 'wishno', 1, 'Wishnu Dwi', 'Buahbatu No.20', 20),
 ('yuleo12345', 'juki', 1, 'farhan yuleo', 'Cijaura timur No.5', 20);
 
 -- --------------------------------------------------------
@@ -150,7 +148,9 @@ CREATE TABLE `pesanan` (
 --
 
 INSERT INTO `pesanan` (`id_barang`, `nama_barang`, `keterangan_barang`, `jenis_barang`, `jumlah_barang`, `tanggal`) VALUES
-('brg001', 'oreo', 'Kosong', 'makanan', 123, '2019-11-13');
+('brg001', 'oreo', 'Kosong', 'makanan', 123, '2019-11-13'),
+('brg002', 'Cocacola', 'Kosong', 'minuman', 245, '2019-11-20'),
+('brg003', 'qwe', 'Kosong', 'qwe', 123, '2019-11-20');
 
 --
 -- Indexes for dumped tables

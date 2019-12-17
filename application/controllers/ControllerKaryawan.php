@@ -61,8 +61,28 @@ class ControllerKaryawan extends CI_Controller {
                 "harga_barang" => $this->input->post('harga', true),
                 "jumlah_barang" => $this->input->post('jumlah', true),
                 "tanggal" => $this->input->post('tanggal', true)
-			];
-            $this->BarangModel->tambahBarang($data);
+            ];
+            $temp = $this->BarangModel->get_by_id('barang_tersedia', $data["id_barang"]);
+            // var_dump($temp);
+            if (empty($temp)){
+                if ( filter_var($data["harga_barang"], FILTER_VALIDATE_INT) !== false ) {
+                    if ( filter_var($data["jumlah_barang"], FILTER_VALIDATE_INT) !== false ) {
+                        $this->BarangModel->tambahBarang($data);
+                    }
+                    else{
+                        echo "<script>alert('Jumlah / Harga barang bukan bilangan bulat!');</script>";
+                    }
+                }
+                else{
+                    echo "<script>alert('Jumlah / Harga barang bukan bilangan bulat!');</script>";
+                }
+            }
+            else if (!empty($temp)){
+                echo "<script>
+					alert('ID Barang telah digunakan!');
+					window.location.href='" . base_url("ControllerKaryawan/input_barang") . "';
+					</script>";
+            }
             date_default_timezone_set('Asia/Jakarta');
             $data['date'] = date('Y-m-d H:i:s');
 			$this->load->view('input_barang', $data);
